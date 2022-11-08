@@ -1,15 +1,21 @@
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
+        //Using Quicksort with 1 as pivot
+        int l = 0;
+        int r = nums.size()-1;
+        int mid = 1;
 
-        sort(begin(nums), end(nums));
-        for(int i=0; i<nums.size(); i++){
-            for(int j=i+1; j<nums.size(); j++){
-                if(nums[i]>nums[j]){
-                    swap(nums[i], nums[j]);
-                }
+        for(int i=0; i<=r; i++){
+            if(nums[i]<mid){
+                swap(nums[i], nums[l]);
+                l++;
             }
-            
+            else if(nums[i]>mid){
+                swap(nums[i], nums[r]);
+                i--;
+                r--;
+            }
         }
     }
 };
