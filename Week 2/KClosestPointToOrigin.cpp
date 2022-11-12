@@ -1,10 +1,12 @@
 class Solution {
 public:
     vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
+        //Using maxheap
         vector<vector<int>> ans(k);
+        //Initiliaizing the maxheap
         priority_queue<vector<int>> heap;
-
-        for(auto& p : points){
+        //setting up the maxheap
+        for(auto& p:points){
             int x = p[0], y = p[1];
             heap.push({x*x + y*y, x, y});
             if(heap.size() > k){
